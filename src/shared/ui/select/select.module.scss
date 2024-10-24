@@ -1,0 +1,132 @@
+.selectWrapper {
+  position: relative;
+  border-radius: 12px;
+
+  svg {
+    color: var(--color-main);
+  }
+
+  &:hover {
+    svg {
+      color: var(--color-hover);
+    }
+  }
+}
+
+.arrow {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transition:
+    transform 0.2s ease-in-out,
+    margin-top 0.2s ease-in-out;
+  margin-top: -12px;
+}
+
+.placeholder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 0 8px;
+
+  cursor: pointer;
+  border: 2px solid var(--color-main);
+  border-radius: 4px;
+
+  font-weight: 400;
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-xl);
+
+  color: var(--color-black);
+
+  background: var(--color-background);
+
+  &:focus-visible {
+    outline-color: var(--color-hover);
+  }
+
+  &[data-status="default"] {
+    border: 2px solid var(--color-main);
+    color: #00000080;
+  }
+  
+  &[data-status="invalid"] {
+    border: 1px solid rgba(255, 0, 0, 1);
+  }
+
+  &[data-selected="true"] {
+    color: rgb(0, 0, 0);
+  }
+}
+
+
+.selectWrapper[data-is-active="true"] .arrow {
+  transform: rotate(180deg);
+}
+
+.selectWrapper[data-is-active="true"] .placeholder {
+  border-color: var(--color-hover);
+}
+
+.selectWrapper:not([data-is-active="true"])
+  .placeholder:not([data-status="invalid"]):hover {
+  border-color: var(--color-hover);
+}
+
+.select {
+  display: grid;
+  position: absolute;
+
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 10;
+  background-color: var(--color-background);
+
+  border: 2px solid var(--color-hover);
+  border-radius: 4px;
+  transform: translateY(4px);
+}
+
+.option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 0 8px;
+  cursor: pointer;
+
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-xl);
+
+  background-color: var(--color-background);
+
+  &:hover {
+    background-color: var(--color-hover-opacity-20);
+  }
+
+  &:focus-visible {
+    outline-color: var(--color-hover);
+  }
+
+  &_isActive {
+    color: var(--color-white);
+    background-color: var(--color-main);
+  }
+
+  &[aria-selected="true"] {
+    background-color: rgb(124, 12, 12);
+  }
+  
+}
+
+.selectWrapper[data-mode="cells"] .select {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.selectWrapper[data-mode="cells"] .option {
+  justify-content: center;
+}
