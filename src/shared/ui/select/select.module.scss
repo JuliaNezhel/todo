@@ -130,3 +130,11 @@
 .selectWrapper[data-mode="cells"] .option {
   justify-content: center;
 }
+
+.label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(10px, -50%);
+  background-color: var(--color-background);
+}

@@ -64,6 +64,7 @@ type SelectProps = {
   status?: "default" | "invalid";
   onChange?: (selected: Option["value"]) => void;
   onClose?: () => void;
+  label?: string 
 };
 
 export const Select = (props: SelectProps) => {
@@ -75,6 +76,7 @@ export const Select = (props: SelectProps) => {
     selected,
     onChange,
     onClose,
+    label
   } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -130,6 +132,7 @@ export const Select = (props: SelectProps) => {
       data-mode={mode}
       data-testid="selectWrapper"
     >
+      {label && <span className={Styles.label}>{label}</span>}
       <div className={Styles.arrow}>
         <VectorIcon />
       </div>
