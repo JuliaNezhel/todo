@@ -8,6 +8,7 @@ import {
 } from "react";
 import { Category, Task } from "./todo.type";
 import ky from "ky";
+import { baseApi } from "../model/api/baseApi";
 
 type TodoContextType = {
   tasks: Task[];
@@ -16,7 +17,8 @@ type TodoContextType = {
 };
 
 type TodoActionsContextType = {
-  fetchTasks: () => void;
+  deleteTask: (id: number) => void;
+  deleteCategories: (id: number) => void;
 };
 
 export const TodoContext = createContext<TodoContextType | null>(null);
@@ -41,12 +43,31 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchCategories = useCallback(async () => {
     setLoading(true);
-    const categories = await ky<Category[]>("GetCategories", {
-      prefixUrl: "http://localhost:8089/api/ToDoList",
-    }).json();
-    console.log(categories);
+    const categories = await baseApi.get<Category[]>("GetCategories").json();
     setCategories((state) => [...state, ...categories]);
     setLoading(false);
+  }, []);
+
+  const deleteTask = useCallback(async (id: number) => {
+    try {
+      setLoading(true);
+      await baseApi.get(`RemoveTask/${id}`);
+      setTasks((state) => state.filter((t) => t.id !== id));
+      setLoading(false);
+    } catch (err) {
+      console.log("error", err);
+    }
+  }, []);
+
+  const deleteCategories = useCallback(async (id: number) => {
+    try {
+      setLoading(true);
+      await baseApi.get(`RemoveCategory/${id}`);
+      setCategories((state) => state.filter((t) => t.id !== id));
+      setLoading(false);
+    } catch (err) {
+      console.log("error", err);
+    }
   }, []);
 
   const value = useMemo(
@@ -60,9 +81,10 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
 
   const valueActions = useMemo(
     () => ({
-      fetchTasks,
+      deleteTask,
+      deleteCategories
     }),
-    [fetchTasks],
+    [deleteTask, deleteCategories],
   );
 
   useEffect(() => {

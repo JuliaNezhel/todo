@@ -11,9 +11,12 @@ const CategoryPage = () => {
       {/* <Modal title="f" closeModal={()=>{}}>dfvdf</Modal> */}
       {categories?.map((category) => (
         <Item
+          variant="category"
           key={category.id}
           name={category.name}
           description={category.description}
+          id={category.id}
+          
         />
       ))}
     </div>

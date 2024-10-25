@@ -10,10 +10,12 @@ const TasksPage = () => {
       <Header buttonTitle="Добавить задачу" />
       {tasks?.map((task) => (
         <Item
+          variant="task"
           key={task.id}
           name={task.name}
           description={task.description}
           categoryId={task.categoryId}
+          id={task.id}
         />
       ))}
     </section>
