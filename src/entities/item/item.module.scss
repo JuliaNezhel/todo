@@ -1,0 +1,59 @@
+.card {
+  border-bottom: 2px solid var(--color-main);
+  padding: 16px 8px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &:hover {
+    background-color: var(--color-hover-opacity-20);
+  }
+
+  &__nameWrapper {
+    display: inline-flex;
+    gap: 16px;
+  }
+
+  &__name {
+    color: var(--color-black);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-s);
+    font-weight: 500;
+  }
+
+  &__categoryName {
+    color: var(--color-main);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height);
+  }
+
+  &__icons {
+    position: absolute;
+    right: 16px;
+    top: 32px;
+    color: var(--color-main);
+
+    display: flex;
+    gap: 14px;
+  }
+
+  &__icon {
+    all: unset;
+    border: none;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline-color: var(--color-hover);
+    }
+  }
+
+  &__description{
+    margin: 0;
+    text-align: start;
+    color: var(--color-gray-fonts);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height);
+  }
+}
