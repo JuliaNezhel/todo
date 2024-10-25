@@ -18,58 +18,63 @@
   box-sizing: border-box;
 
   color: var(--color-white);
-}
 
-.logo {
-  all: unset;
-  line-height: var(--line-height-m);
-  font-size: var(--font-size-xl);
-}
-
-.navList {
-  all: unset;
-  display: flex;
-  gap: 8px;
-  list-style-type: none;
-  align-items: center;
-}
-
-.link {
-  all: unset;
-
-  color: var(--color-background);
-  text-decoration: underline;
-  font-size: var(--font-size-m);
-  line-height: var(--line-height-l);
-
-  cursor: pointer;
-
-  &:hover {
-    color: var(--color-white);
+  &__wrapper {
+    display: inline-flex;
+    gap: 65px;
   }
 
-  &:focus-visible {
-    outline: var(--color-hover) 1px solid;
-    border-radius: 4px;
+  &__logo {
+    all: unset;
+    line-height: var(--line-height-m);
+    font-size: var(--font-size-xl);
   }
 
-  &__isActive {
-    color: var(--color-blue);
+  &__navList {
+    all: unset;
+    display: flex;
+    gap: 8px;
+    list-style-type: none;
+    align-items: center;
+  }
 
-    &:visited {
+  &__link {
+    all: unset;
+
+    color: var(--color-background);
+    text-decoration: underline;
+    font-size: var(--font-size-m);
+    line-height: var(--line-height-l);
+
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-white);
+    }
+
+    &:focus-visible {
+      outline: var(--color-hover) 1px solid;
+      border-radius: 4px;
+    }
+
+    &_isActive {
       color: var(--color-blue);
+
+      &:visited {
+        color: var(--color-blue);
+      }
     }
   }
-}
 
-.button {
-  all: unset;
-  font-size: var(--font-size-s);
-  line-height: var(--line-height-xl);
-  cursor: pointer;
+  &__button {
+    all: unset;
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-xl);
+    cursor: pointer;
 
-  &:focus-visible {
-    outline: var(--color-hover) 1px solid;
-    border-radius: 4px;
+    &:focus-visible {
+      outline: var(--color-hover) 1px solid;
+      border-radius: 4px;
+    }
   }
 }
