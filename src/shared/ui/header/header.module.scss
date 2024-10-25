@@ -1,6 +1,6 @@
 .header {
   width: 100vw;
-  height: 88px;
+  height: var(--height-header);
   padding: 24px;
 
   box-shadow: 0px 4px 8px 0px #00000080;
@@ -12,6 +12,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
 
   background-color: var(--color-main);
   box-sizing: border-box;
@@ -40,15 +41,24 @@
   text-decoration: underline;
   font-size: var(--font-size-m);
   line-height: var(--line-height-l);
-  
+
   cursor: pointer;
 
   &:hover {
     color: var(--color-white);
   }
 
+  &:focus-visible {
+    outline: var(--color-hover) 1px solid;
+    border-radius: 4px;
+  }
+
   &__isActive {
     color: var(--color-blue);
+
+    &:visited {
+      color: var(--color-blue);
+    }
   }
 }
 
@@ -57,4 +67,9 @@
   font-size: var(--font-size-s);
   line-height: var(--line-height-xl);
   cursor: pointer;
+
+  &:focus-visible {
+    outline: var(--color-hover) 1px solid;
+    border-radius: 4px;
+  }
 }

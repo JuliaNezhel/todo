@@ -1,3 +1,11 @@
 @forward './color';
 @forward './typography';
 @forward './boilerplate';
+@forward './const';
+
+.wrapper{
+    margin: 0 auto;
+    max-width: 1000px;
+    margin-top: var(--height-header);
+    padding: 5px;
+}
