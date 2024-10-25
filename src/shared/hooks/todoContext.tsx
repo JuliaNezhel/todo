@@ -2,19 +2,21 @@ import {
   createContext,
   ReactNode,
   useCallback,
+  useEffect,
   useMemo,
   useState,
 } from "react";
-import { Todo } from "./todo.type";
+import { Category, Task } from "./todo.type";
 import ky from "ky";
 
 type TodoContextType = {
-  todos: Todo[];
+  tasks: Task[];
   loading: boolean;
+  categories: Category[];
 };
 
 type TodoActionsContextType = {
-  fetchTodos: () => void;
+  fetchTasks: () => void;
 };
 
 export const TodoContext = createContext<TodoContextType | null>(null);
@@ -23,33 +25,50 @@ export const TodoActionsContext = createContext<TodoActionsContextType | null>(
 );
 
 export const TodoProvider = ({ children }: { children: ReactNode }) => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchTodos = useCallback(async () => {
+  const fetchTasks = useCallback(async () => {
     setLoading(true);
-    const todos = await ky<Todo[]>(
-      "GetTasks",  {prefixUrl: 'http://localhost:8089/api/ToDoList'}
-    ).json();
-    console.log(todos);
-    setTodos((state) => [...state, ...todos]);
+    const tasks = await ky<Task[]>("GetTasks", {
+      prefixUrl: "http://localhost:8089/api/ToDoList",
+    }).json();
+    console.log(tasks);
+    setTasks((state) => [...state, ...tasks]);
+    setLoading(false);
+  }, []);
+
+  const fetchCategories = useCallback(async () => {
+    setLoading(true);
+    const categories = await ky<Category[]>("GetCategories", {
+      prefixUrl: "http://localhost:8089/api/ToDoList",
+    }).json();
+    console.log(categories);
+    setCategories((state) => [...state, ...categories]);
     setLoading(false);
   }, []);
 
   const value = useMemo(
     () => ({
-      todos,
+      tasks,
       loading,
+      categories,
     }),
-    [todos, loading],
+    [tasks, loading, categories],
   );
 
   const valueActions = useMemo(
     () => ({
-      fetchTodos,
+      fetchTasks,
     }),
-    [fetchTodos],
+    [fetchTasks],
   );
+
+  useEffect(() => {
+    fetchTasks();
+    fetchCategories();
+  }, []);
 
   return (
     <TodoContext.Provider value={value}>

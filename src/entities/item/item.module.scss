@@ -1,4 +1,4 @@
-.card {
+.item {
   border-bottom: 2px solid var(--color-main);
   padding: 16px 8px;
   position: relative;
@@ -45,11 +45,12 @@
     cursor: pointer;
 
     &:focus-visible {
-      outline-color: var(--color-hover);
+      outline: var(--color-hover) 1px solid;
+      border-radius: 4px;
     }
   }
 
-  &__description{
+  &__description {
     margin: 0;
     text-align: start;
     color: var(--color-gray-fonts);
