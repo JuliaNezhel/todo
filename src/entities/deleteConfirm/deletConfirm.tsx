@@ -44,6 +44,7 @@ export const DeleteConfirmation = memo(
             closeModal={closeModalHandle}
             actionName="Да"
             onActionClick={onDeleteHandle}
+            titleClose="Нет"
           >
             <p>
               Вы уверены, что хотите удалить {textDelete} {name}?

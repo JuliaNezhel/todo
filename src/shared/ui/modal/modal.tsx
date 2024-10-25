@@ -11,6 +11,7 @@ export type ModalType = {
   onActionClick?: () => void;
   title: string;
   className?: string;
+  titleClose?: string;
 };
 
 export const Modal = ({
@@ -20,6 +21,7 @@ export const Modal = ({
   onActionClick,
   title,
   className,
+  titleClose = "Закрыть",
 }: ModalType) => {
   return (
     <div className={style.overlay} onClick={oncCloseModal}>
@@ -47,7 +49,7 @@ export const Modal = ({
           <div className={style.modal__buttons}>
             <Button onClick={onActionClick}>{actionTitle}</Button>
             <Button variant="secondary" onClick={oncCloseModal}>
-              Закрыть
+              {titleClose}
             </Button>
           </div>
         </div>
