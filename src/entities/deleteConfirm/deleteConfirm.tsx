@@ -1,7 +1,8 @@
+import { TrashIcon } from "@/shared/assets/icon";
+import { useTodoActions } from "@/shared/hooks/useTodoActions";
+import { DialogButtons, MainPopup } from "@/shared/ui";
 import { memo, useState } from "react";
-import { Modal } from "../../shared/ui";
-import { TrashIcon } from "../../shared/assets/icon";
-import { useTodoActions } from "../../shared/hooks/useTodoActions";
+
 
 type Props = {
   className?: string;
@@ -24,9 +25,8 @@ export const DeleteConfirmation = memo(
       setShow(true);
     };
 
-    const onDeleteHandle = () => variant === "task" ? deleteTask(id) : deleteCategories(id);
-      
-  
+    const onDeleteHandle = () =>
+      variant === "task" ? deleteTask(id) : deleteCategories(id);
 
     return (
       <>
@@ -38,19 +38,21 @@ export const DeleteConfirmation = memo(
         >
           <TrashIcon />
         </button>
-        {show && (
-          <Modal
-            title="Удаление задачи"
-            closeModal={closeModalHandle}
-            actionName="Да"
-            onActionClick={onDeleteHandle}
-            titleClose="Нет"
-          >
-            <p>
-              Вы уверены, что хотите удалить {textDelete} {name}?
-            </p>
-          </Modal>
-        )}
+        <MainPopup
+          isOpen={show}
+          onClose={closeModalHandle}
+          title="Удаление задачи"
+        >
+          <p>
+            Вы уверены, что хотите удалить {textDelete} {name}?
+          </p>
+          <DialogButtons
+            primaryButtonClick={onDeleteHandle}
+            primaryButtonText="Да"
+            secondaryButtonClick={closeModalHandle}
+            secondaryButtonText="Нет"
+          />
+        </MainPopup>
       </>
     );
   },

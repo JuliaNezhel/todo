@@ -1,0 +1,39 @@
+.container {
+  background-color: var(--color-background);
+  box-shadow: 0px 8px 24px 0px #00000080;
+
+  padding: 24px;
+  border-radius: 4px;
+
+  max-height: 80vh;
+  max-width: 80vw;
+  min-width: 32vw;
+
+  overflow: auto;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  border: none;
+  background: none;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  color: var(--color-main);
+
+  &:focus-visible {
+    outline-color: var(--color-hover);
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xxl);
+  color: var(--color-main);
+  text-align: left;
+  margin: 0;
+
+  margin-bottom: 32px;
+}
