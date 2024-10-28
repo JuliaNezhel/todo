@@ -1,6 +1,7 @@
-import { useTodo } from "../../shared/hooks/useTodo";
-import { Header } from "../../shared/ui";
-import { Item } from "../../entities/item";
+import { Item } from "@/entities/item";
+import { useTodo } from "@/shared/hooks/useTodo";
+import { Header } from "@/shared/ui";
+
 
 const TasksPage = () => {
   const { tasks } = useTodo();

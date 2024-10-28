@@ -1,6 +1,7 @@
-import { Item } from "../../entities/item";
-import { useTodo } from "../../shared/hooks/useTodo";
-import { Header } from "../../shared/ui";
+import { Item } from "@/entities/item";
+import { useTodo } from "@/shared/hooks/useTodo";
+import { Header } from "@/shared/ui";
+
 
 const CategoryPage = () => {
   const { categories } = useTodo();

@@ -1,6 +1,6 @@
-import { FolderIcon, PenIcon } from "../../shared/assets/icon";
-import { useTodo } from "../../shared/hooks/useTodo";
-import { DeleteConfirmation } from "../deleteConfirm/deletConfirm";
+import { useTodo } from "@/shared/hooks/useTodo";
+import { FolderIcon, PenIcon } from "@/shared/assets/icon";
+import { DeleteConfirmation } from "@/entities/deleteConfirm";
 
 import style from "./item.module.scss";
 

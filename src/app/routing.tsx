@@ -4,10 +4,11 @@ import {
   RouteObject,
   RouterProvider,
 } from "react-router-dom";
-import TasksPage from "../pages/tasks/tasks";
-import CategoryPage from "../pages/category/category";
+
+import TasksPage from "@/pages/tasks/tasks";
+import CategoryPage from "@/pages/category/category";
+import { ROUTES } from "@/shared/enums/pathRoutes";
 import { Layout } from "./Layout";
-import { ROUTES } from "../shared/enums/pathRoutes";
 
 const route: RouteObject[] = [
   { element: <TasksPage />, path: ROUTES.TASKS },
